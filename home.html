@@ -1,0 +1,58 @@
+{%  extends 'app/base.html'  %}
+{%load static%}
+
+{% block banner_slider %}
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="{% static "app/images/banner/b1.jpg"  %}" class="d-block w-100" alt="Sua ong tho" height="480">
+        
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{% static "app/images/banner/b2.jpg"  %}" class="d-block w-100" alt="Sua ong tho22222"height="480">
+        
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="{% static "app/images/banner/b3.jpg"  %}" class="d-block w-100" alt="Sua ong tho33333"height="480">
+        
+      </div>
+      <div class="carousel-item" data-bs-interval="4000">
+        <img src="{% static "app/images/banner/b2.jpg"  %}" class="d-block w-100" alt="Sua ong tho44444"height="480">
+        
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock banner_slider %}
+{%block main-content%}
+<div class="row" style = "width : 100%">
+  {% for product in products%}
+    <div class="col-lg-4">
+        <img class="thumbnail" src ="{{product.ImageURL}}">
+        <div class = "box-element product">
+            <h6><strong>{{product.name}}</strong><h6>
+            <hr>
+            <button data-product = {{product.id}} data-action = "add" class = "btn btn-outline-secondary add-btn update-cart">Them vao gio hang</button>
+            <button data-product = {{product.id}} data-action = "remove" class = "btn btn-outline-secondary add-btn update-cart">Tru 1 trong gio hang</button>
+            <h3 style = "display: inline-block; float: right"><strong>${{product.price | floatformat:2}}</strong></h3>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<hr /><hr /><hr />
+ 
+
+{%endblock main-content%}
